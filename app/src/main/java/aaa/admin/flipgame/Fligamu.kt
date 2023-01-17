@@ -34,7 +34,7 @@ object Fligamu {
     const val FLIGAMAF = "VdkuAEYGy3tZxMUc6xgshQ"
     const val FLIGAMOV = "Organic"
     const val FLIGAMRC = 100
-    const val FLIGAMKOR = "corappkor"
+    const val FLIGAMKOR = "filgamkor"
     const val FLIGAMDOR = "https://www.google.com/"
     const val FLIGAMNOS = "campaign"
     const val FLIGAM = "fligam"
@@ -141,7 +141,7 @@ object Fligamu {
         return if (fligamsp.getBoolean(FLIGAMFL, true)) fligamsec else -1
     }
 
-    fun getFligamim(fligamc: Context): String {
+    fun getFligamimg(fligamc: Context): String {
         val fligamc = fligamc.resources.configuration.orientation
         val fligami = if (fligamc == Configuration.ORIENTATION_PORTRAIT) {
             FLIGAMIV

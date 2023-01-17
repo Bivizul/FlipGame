@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">FlipGame</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="red">RED</string>
+    <string name="black">BLACK</string>
+    <string name="choose_color">Choose color</string>
+    <string name="zero">0</string>
+    <string name="slash">/</string>
+    <string name="desc_game">Guess the color on the card</string>
 </resources>

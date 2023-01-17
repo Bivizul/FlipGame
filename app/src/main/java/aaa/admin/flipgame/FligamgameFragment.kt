@@ -5,72 +5,66 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnticipateOvershootInterpolator
-import android.widget.ImageView
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import java.util.*
-
 
 class FligamgameFragment : Fragment(R.layout.fragment_fligamgame) {
 
-    var animation1: FlipCardAnimation? = null
-    var animation: FlipCardAnimation? = null
     var animation_item: FlipCardAnimation? = null
-    var animation_item1: FlipCardAnimation? = null
-    var num = 0
-    var iv_pro : ImageView? = null
-    var iv_pro_item : ImageView? = null
-    var iv_pro_item1 : ImageView? = null
+    var scoreTV: TextView? = null
+    var countTV: TextView? = null
+    var score = 0
+    var count = 0
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(SCORE, score)
+        outState.putInt(COUNT, count)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val llyt = view.findViewById(R.id.llyt) as LinearLayout
         val llyt_item = view.findViewById(R.id.llyt_item) as LinearLayout
-        val llyt_item1 = view.findViewById(R.id.llyt_item1) as LinearLayout
-        val view_bg: View = view.findViewById(R.id.view_bg)
-        iv_pro = view.findViewById<ImageView>(R.id.iv_pro)
-        iv_pro_item = view.findViewById<ImageView>(R.id.iv_pro_item)
-        iv_pro_item1 = view.findViewById<ImageView>(R.id.iv_pro_item1)
-        val tv_item = view.findViewById<TextView>(R.id.tv_item)
-        val tv_item1 = view.findViewById<TextView>(R.id.tv_item1)
-        val tv_price = view.findViewById<TextView>(R.id.tv_price)
         val tv_price_item = view.findViewById<TextView>(R.id.tv_price_item)
-        val tv_price_item1 = view.findViewById<TextView>(R.id.tv_price_item1)
-        val tv = view.findViewById<TextView>(R.id.tv)
-        llyt.setOnClickListener {
-            startAnimation(animation, llyt, tv, tv_price, iv_pro, 180)
-            startAnimation(animation1, view_bg, null, null, null, -180)
-        }
-        llyt_item.setOnClickListener {
+        scoreTV = view.findViewById<TextView>(R.id.tv_score)
+        countTV = view.findViewById<TextView>(R.id.tv_count)
+        val btnBlack = view.findViewById<Button>(R.id.btn_black)
+        val btnRed = view.findViewById<Button>(R.id.btn_red)
+        btnBlack.setOnClickListener {
             startAnimation(
                 animation_item,
                 llyt_item,
-                tv_item,
                 tv_price_item,
-                iv_pro_item,
+                BLACK_CARD,
+                180,
+            )
+        }
+        btnRed.setOnClickListener {
+            startAnimation(
+                animation_item,
+                llyt_item,
+                tv_price_item,
+                RED_CARD,
                 180
             )
         }
-        llyt_item1.setOnClickListener {
-            startAnimation(
-                animation_item1,
-                llyt_item1,
-                tv_item1,
-                tv_price_item1,
-                iv_pro_item1,
-                -180
-            )
-        }
+    }
 
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        score = savedInstanceState?.getInt(SCORE) ?: 0
+        count = savedInstanceState?.getInt(COUNT) ?: 0
+        scoreTV?.text = score.toString()
+        countTV?.text = count.toString()
     }
 
     private fun startAnimation(
         animation: FlipCardAnimation?,
         llyt_item: View,
-        tv_item: TextView?,
         tv_price_item: TextView?,
-        iv_pro: ImageView?,
+        colorCard: Int,
         degree: Int
     ) {
         var animation: FlipCardAnimation? = animation
@@ -84,7 +78,7 @@ class FligamgameFragment : Fragment(R.layout.fragment_fligamgame) {
             animation.interpolator = AnticipateOvershootInterpolator()
             animation.duration = 3000
             animation.fillAfter = false
-            animation.repeatCount = 1
+            animation.repeatCount = 0
             animation.setAnimationListener(object : Animation.AnimationListener {
                 override fun onAnimationStart(animation: Animation) {}
                 override fun onAnimationEnd(animation: Animation) {}
@@ -94,26 +88,39 @@ class FligamgameFragment : Fragment(R.layout.fragment_fligamgame) {
             })
             animation.setOnContentChangeListener(object : OnContentChangeListener {
                 override fun contentChange() {
-                    if (iv_pro == null) {
-                        return
+                    var answer = ""
+                    val numRandom = kotlin.random.Random.nextInt(1, 3)
+                    if (colorCard == numRandom) {
+                        answer = "RIGHT"
+                        score++
+                        count++
+                    } else {
+                        answer = "WRONG"
+                        count++
                     }
-                    if (num >= 3) {
-                        num = 0
+                    when (numRandom) {
+                        BLACK_CARD -> {
+                            llyt_item.setBackgroundResource(R.drawable.shape_bg_black)
+                            tv_price_item?.text = answer
+                        }
+                        else -> {
+                            llyt_item.setBackgroundResource(R.drawable.shape_bg_red)
+                            tv_price_item?.text = answer
+                        }
                     }
-//                    iv_pro.setBackgroundResource(DRAWABLE.get(num))
-                    tv_item?.text = "￥" + Random().nextInt(500)
-                    if (num === 0) {
-                        tv_price_item?.text = "Discount"
-                    } else if (num === 1) {
-                        tv_price_item?.text = "Price"
-                    } else if (num === 2) {
-                        tv_price_item?.text = "Cost"
-                    }
-                    num++
+                    scoreTV?.text = score.toString()
+                    countTV?.text = count.toString()
                 }
             })
             llyt_item.startAnimation(animation)
         }
+    }
+
+    companion object {
+        const val BLACK_CARD = 1
+        const val RED_CARD = 2
+        const val SCORE = "score"
+        const val COUNT = "count"
     }
 
 }

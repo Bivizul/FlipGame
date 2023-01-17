@@ -9,10 +9,10 @@ import com.onesignal.OneSignal.OSRemoteNotificationReceivedHandler
 class Fligamosrnrh : OSRemoteNotificationReceivedHandler {
 
     override fun remoteNotificationReceived(p0: Context?, p1: OSNotificationReceivedEvent?) {
-        val corapponre = p1!!.notification.additionalData.get(FLIGAM).toString()
-        if (corapponre.isNotEmpty()) {
+        val filgamonre = p1!!.notification.additionalData.get(FLIGAM).toString()
+        if (filgamonre.isNotEmpty()) {
             p0.let {
-                AppsFlyerLib.getInstance().logEvent(p0, corapponre, null)
+                AppsFlyerLib.getInstance().logEvent(p0, filgamonre, null)
                 p1.complete(null)
             }
         }
