@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fligamashFragment">
+
+    <fragment
+        android:id="@+id/fligamashFragment"
+        android:name="aaa.admin.flipgame.FligamashFragment"
+        android:label="fragment_fligamash"
+        tools:layout="@layout/fragment_fligamash" >
+        <action
+            android:id="@+id/action_fligamashFragment_to_fligammenuFragment"
+            app:destination="@id/fligammenuFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/fligamgameFragment"
+        android:name="aaa.admin.flipgame.FligamgameFragment"
+        android:label="fragment_fligamgame"
+        tools:layout="@layout/fragment_fligamgame" />
+    <fragment
+        android:id="@+id/fligammenuFragment"
+        android:name="aaa.admin.flipgame.FligammenuFragment"
+        android:label="fragment_fligammenu"
+        tools:layout="@layout/fragment_fligammenu" >
+        <action
+            android:id="@+id/action_fligammenuFragment_to_fligamgameFragment"
+            app:destination="@id/fligamgameFragment" />
+    </fragment>
+</navigation>
