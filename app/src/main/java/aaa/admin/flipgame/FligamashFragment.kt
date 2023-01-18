@@ -4,7 +4,7 @@ import aaa.admin.flipgame.Fligamu.FLIGAMD
 import aaa.admin.flipgame.Fligamu.FLIGAMEJ
 import aaa.admin.flipgame.Fligamu.FLIGAMFOS
 import aaa.admin.flipgame.Fligamu.FLIGAMKOR
-import aaa.admin.flipgame.Fligamu.FLIGAMN
+import aaa.admin.flipgame.Fligamu.FLIGAMG
 import aaa.admin.flipgame.Fligamu.FLIGAMNOS
 import aaa.admin.flipgame.Fligamu.FLIGAMNP
 import aaa.admin.flipgame.Fligamu.FLIGAMOV
@@ -49,7 +49,7 @@ class FligamashFragment : Fragment(R.layout.fragment_fligamash) {
             if (fligamgr.isSuccessful) {
                 if (fligamgr.body() != null) {
                     when (fligamgr.body()!!.fligamg) {
-                        FLIGAMN -> {
+                        FLIGAMG -> {
                             findNavController().navigate(R.id.action_fligamashFragment_to_fligammenuFragment)
                         }
                         FLIGAMNP -> {

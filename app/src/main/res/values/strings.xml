@@ -6,4 +6,6 @@
     <string name="zero">0</string>
     <string name="slash">/</string>
     <string name="desc_game">Guess the color on the card</string>
+    <string name="back_image">back image</string>
+    <string name="start">Start</string>
 </resources>

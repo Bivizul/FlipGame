@@ -16,7 +16,6 @@
         android:padding="8dp"
         android:text="@string/desc_game"
         android:textAlignment="center"
-        android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/llyt_item"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +39,6 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/zero"
-            android:textColor="@color/white"
             android:textSize="32sp" />
 
         <TextView
@@ -48,7 +46,6 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/slash"
-            android:textColor="@color/white"
             android:textSize="32sp" />
 
         <TextView
@@ -57,7 +54,6 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/zero"
-            android:textColor="@color/white"
             android:textSize="32sp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -106,7 +102,6 @@
             android:layout_weight="1"
             android:background="@drawable/shape_bg_black"
             android:text="@string/black"
-            android:textColor="@color/white"
             android:textSize="32sp" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -117,7 +112,6 @@
             android:layout_weight="1"
             android:background="@drawable/shape_bg_red"
             android:text="@string/red"
-            android:textColor="@color/white"
             android:textSize="32sp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

@@ -9,7 +9,7 @@
         android:id="@+id/fligamashFragment"
         android:name="aaa.admin.flipgame.FligamashFragment"
         android:label="fragment_fligamash"
-        tools:layout="@layout/fragment_fligamash" >
+        tools:layout="@layout/fragment_fligamash">
         <action
             android:id="@+id/action_fligamashFragment_to_fligammenuFragment"
             app:destination="@id/fligammenuFragment"
@@ -25,7 +25,7 @@
         android:id="@+id/fligammenuFragment"
         android:name="aaa.admin.flipgame.FligammenuFragment"
         android:label="fragment_fligammenu"
-        tools:layout="@layout/fragment_fligammenu" >
+        tools:layout="@layout/fragment_fligammenu">
         <action
             android:id="@+id/action_fligammenuFragment_to_fligamgameFragment"
             app:destination="@id/fligamgameFragment" />

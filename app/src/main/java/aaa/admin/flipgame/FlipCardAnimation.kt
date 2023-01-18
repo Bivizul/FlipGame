@@ -8,8 +8,8 @@ import android.view.animation.Transformation
 class FlipCardAnimation(
     private val mFromDegrees: Float, private val mToDegrees: Float,
     private val mCenterX: Float, private val mCenterY: Float
-) :
-    Animation() {
+) : Animation() {
+
     private var mCamera: Camera? = null
 
     private var isContentChange = false
